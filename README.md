@@ -14,21 +14,19 @@ Type 1 hypervisors (bare metal hypervisors) are installed natively on the underl
 
 Type 2 hypervisors (hosted hypervisors) run on the host computer's operating system. Unlike bare-metal hypervisors, guest operating systems are not tied to physical hardware. Users can run VMs and use their computer systems as usual. This makes type 2 hypervisors suitable for personal users or small businesses that don't have dedicated servers for virtualization.
 
-### virtual desktop infrastructure (VDI)
+### Virtual Desktop Infrastructure (VDI)
 
 VDI deployments allow users to remotely access desktop environments, such as Windows or open source operating systems like Linux.
 
-### benefits of using virtual machine
+### Benefits of using virtual machine
 
 1) It enhances security – VM environments are isolated from the host operating system and can be easily reverted to older versions.
-
 2) It improves cost efficiency – by hosting multiple VMs on one server, the physical hardware is leveraged at its maximum capacity.
-
 3) Cloud computing
-
 4) Scalability
 
-source: https://www.citrix.com/solutions/vdi-and-daas/what-is-a-virtual-machine.html
+source:
+https://www.citrix.com/solutions/vdi-and-daas/what-is-a-virtual-machine.html
 
 
 ## What is "root" on Linux?
@@ -39,3 +37,39 @@ The root user is the Linux superuser. The root account should be used exclusivel
 
 The sudo command makes it possible to administer Linux computers without logging in as the root user. It bestows root's authority only to those, who are added to the sudoers list.
 
+#### sudo vs su
+
+Sudo authentification is through user's own password, whereas su authentification through the root user's password. You first need to assign a password to the root user and everyone has to know the root user's password to use su – it risks the system security. It is much more secure to the sudoers list and sudo than su for that reason.
+
+#### /etc/shadow
+
+The "/etc/shadow" file contains the username of each account on the Linux computer, along with other pieces of information, including each account's encrypted password, when the password was last changed, and when the password expires. It can only be read by root.
+
+#### sudo bash
+
+Using sudo to run a Bash shell opens a new shell with root as the user.
+To exit from the root user's shell, hit 'ctrl+D' or type 'exit' and hit enter.
+
+### /etc/sudoers
+
+This file MUST be edited with the 'visudo' command as root.
+The authority to rewrite sudoers is not given to anyone including the root.
+
+### Secure Path
+
+The shell PATH that is used to execute sudo.
+
+#### How does PATH work in Bash?
+
+The PATH variable is responsible for telling bash where to look for programmes that certain commands are calling.
+
+In other words, the PATH variable stores where executables may be found. Whenever any command is run, the shell looks up the PATH directories for the target executable file and runs it. Most of the command tools are located under the /usr/bin directory.
+
+echo $PATH – the $ sign is to denote a variable, the echo command prints the value of the PATH variable
+
+Each of the directories is separated by a ':' sign.
+
+source:
+https://www.howtogeek.com/737563/what-is-root-on-linux/
+https://www.tuwlab.com/ece/24044
+https://linuxhint.com/path_in_bash/
