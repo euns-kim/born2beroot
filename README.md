@@ -73,10 +73,10 @@ APT stands for Advanced Package Tool. It is a set of core tools inside Debian an
 
 `sudo apt update`  
 `sudo apt upgrade`  
-`apt list` (list all packages)  \*
-`apt list --upgradable`  \*\*
-`apt list --installed`   \**
-`apt depends [pkg_name]` (list all the dependencies a package)  
+`apt list` (list all packages)  
+`apt list --upgradable`  
+`apt list --installed`  
+`apt depends [pkg_name]` (list all the dependencies a package has)  
 `sudo apt install [pkg_name]`  
 `sudo apt remove [pkg_name]`  
 `sudo apt purge [pkg_name]` (remove both package and config files)  
@@ -88,16 +88,13 @@ APT stands for Advanced Package Tool. It is a set of core tools inside Debian an
 `sudo apt-mark unhold [pkg_name]`  
 `sudo apt edit-sources` (edit the source information file)  
 
-
-
-
 ### 6)	dpkg command
 
 `dpkg` is a package manager for Debian, Ubuntu and many other Linux distro.
 
-`dpkg -l` (list all installed packages, along with package version and short description)
-`dpkg -l [pkg_name]` (list individual installed packages)
-`dpkg -l | grep [pkg_name]` (check if a programm is successfully installed)
+`dpkg -l` (list all installed packages, along with package version and short description)  
+`dpkg -l [pkg_name]` (list individual installed packages)  
+`dpkg -l | grep [pkg_name]` (check if a programm is successfully installed)  
 
 ### 7)	getent command
 
