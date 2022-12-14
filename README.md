@@ -67,7 +67,110 @@ The PATH variable is responsible for telling bash where to look for programmes t
 
 The $ sign is to denote a variable. The echo command prints the value of the PATH variable. Each of the directories is separated by a ':' sign.
 
+### 5)	apt command
+
+APT stands for Advanced Package Tool. It is a set of core tools inside Debian and Ubuntu Linux system. You can use the apt command to install, delete or remove apps, keep Ubuntu/Debian server up to date with security patches and more.
+
+`sudo apt update`
+`sudo apt upgrade`
+`apt list` (list all packages)
+`apt list --upgradable`
+`apt list --installed`
+`apt depends [pkg_name]` (list all the dependencies a package)
+`sudo apt install [pkg_name]`
+`sudo apt remove [pkg_name]`
+`sudo apt purge [pkg_name]` (remove both package and config files)
+`sudo apt (--purge) autoremove` (remove automatically installed packages when no longer needed)
+`apt search [pkg_name]`
+`apt show [pkg_name]` (show information about the given package(s))
+`apt rdepends [pkg_name]` (recursive dependency listings similar to apt-cache)
+`sudo apt-mark hold [pkg_name]` (Package holding means it can be upgraded till you run unhold on it again.)
+`sudo apt-mark unhold [pkg_name]`
+`sudo apt edit-sources` (edit the source information file)
+
+### 6)	dpkg command
+
+`dpkg` is a package manager for Debian, Ubuntu and many other Linux distro.
+
+`dpkg -l` (list all installed packages, along with package version and short description)
+`dpkg -l [pkg_name]` (list individual installed packages)
+`dpkg -l | grep [pkg_name]` (check if a programm is successfully installed)
+
+### 7)	getent command
+
+The `getent` command displays entries from databases supported by the Name Service Switch libraries, which are configured in /etc/nsswitch.conf.
+
+### 8) grep command
+
+The `grep` command searches for the pattern specified by the Pattern parameter and writes each matching line to standard output. 
+
+`grep [option][pattern][filename]`
+
 Source:
 - https://www.howtogeek.com/737563/what-is-root-on-linux/
 - https://www.tuwlab.com/ece/24044
 - https://linuxhint.com/path_in_bash/
+- https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/
+- https://www.cyberciti.biz/howto/question/linux/dpkg-cheat-sheet.php?utm_source=Linux_Unix_Command&utm_medium=faq&utm_campaign=nixcmd
+- https://man7.org/linux/man-pages/man1/getent.1.html
+- https://coding-factory.tistory.com/802
+- https://coding-factory.tistory.com/803
+
+
+
+Create a group:
+
+sudo groupadd [group_name]
+
+Check if a group created:
+
+getent group
+
+Check all local users:
+
+cut -d: -f1 /etc/passwd
+
+Create a user:
+
+sudo adduser [new_username]
+
+Assign an user into a group:
+
+sudo usermod -aG [group_name] [username]
+
+Check which users are in a group:
+
+getent group [group_name]
+
+Check which groups user account belongs:
+
+groups
+
+Check password rules for the user:
+
+chage -l [new_username]
+
+
+
+Check current hostname:
+
+hostnamectl
+
+Change the hostname:
+
+hostnamectl [hostname] [new_hostname]
+
+Change /etc/hosts file:
+
+sudo nano /etc/hosts
+
+Change old_hostname with new_hostname:
+
+127.0.0.1	localhost
+127.0.0.1	new_hostname
+
+Reboot:
+
+sudo reboot
+
+
