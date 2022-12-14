@@ -71,23 +71,22 @@ The $ sign is to denote a variable. The echo command prints the value of the PAT
 
 APT stands for Advanced Package Tool. It is a set of core tools inside Debian and Ubuntu Linux system. You can use the apt command to install, delete or remove apps, keep Ubuntu/Debian server up to date with security patches and more.
 
-`sudo apt update`
-
-`sudo apt upgrade`
-`apt list` (list all packages)
-`apt list --upgradable`
-`apt list --installed`
-`apt depends [pkg_name]` (list all the dependencies a package)
-`sudo apt install [pkg_name]`
-`sudo apt remove [pkg_name]`
-`sudo apt purge [pkg_name]` (remove both package and config files)
-`sudo apt (--purge) autoremove` (remove automatically installed packages when no longer needed)
-`apt search [pkg_name]`
-`apt show [pkg_name]` (show information about the given package(s))
-`apt rdepends [pkg_name]` (recursive dependency listings similar to apt-cache)
-`sudo apt-mark hold [pkg_name]` (Package holding means it can be upgraded till you run unhold on it again.)
-`sudo apt-mark unhold [pkg_name]`
-`sudo apt edit-sources` (edit the source information file)
+`sudo apt update`  
+`sudo apt upgrade`  
+`apt list` (list all packages)  
+`apt list --upgradable`  
+`apt list --installed`  
+`apt depends [pkg_name]` (list all the dependencies a package)  
+`sudo apt install [pkg_name]`  
+`sudo apt remove [pkg_name]`  
+`sudo apt purge [pkg_name]` (remove both package and config files)  
+`sudo apt (--purge) autoremove` (remove automatically installed packages when no longer needed)  
+`apt search [pkg_name]`  
+`apt show [pkg_name]` (show information about the given package(s))  
+`apt rdepends [pkg_name]` (recursive dependency listings similar to apt-cache)  
+`sudo apt-mark hold [pkg_name]` (Package holding means it can be upgraded till you run unhold on it again.)  
+`sudo apt-mark unhold [pkg_name]`  
+`sudo apt edit-sources` (edit the source information file)  
 
 ### 6)	dpkg command
 
