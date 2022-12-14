@@ -118,18 +118,19 @@ show:
 - User's group ID number (GID)
 - Full name of the user (GECOS)
 - User home directory
-- Login shell (defaults to `/bin/bash`)
+- Login shell (defaults to `/bin/bash`)  
 
 `awk -F: '{ print $1}' /etx/passwd`  
 `cut -d: -f1 /etc/passwd`  
 `getent passwd | awk -F: { print $1}`  
 `getent passwd | cut -d: -f1`  
 
-show only the usernames  
+show:
+- only the usernames  
 
-`getent passwd | grep [username]` checks if the user exists  
+`getent passwd | grep [username]` checks if the user exists   
 
-`getent passwd | wc -l` checks how many user accounts are on the system  
+`getent passwd | wc -l` checks how many user accounts are on the system    
 
 
 Source:
@@ -146,7 +147,7 @@ Source:
 
 ## Project related commands
 
-1. group and user
+1. Group and user
 
 + Create a group:  
 ```
@@ -191,9 +192,9 @@ groups
 + Check password rules for the user:  
 ```
 chage -l [new_username]
-```
+```  
 
-2. hostname
+2. Hostname
 
 + Check current hostname:  
 ```
@@ -219,9 +220,9 @@ sudo nano /etc/hosts
 + Reboot:
 ```
 sudo reboot
-```
+```  
 
-3. sudo
+3. Sudo
 
 + Adding user to sudo group:  
 ```
@@ -235,8 +236,8 @@ usermod -aG sudo [user_name]
 
 + Verify:  
 ```
-getent group sudo
-```
+getent group
+```  
 
 4. SSH
 
@@ -256,8 +257,8 @@ systemctl status ssh
 ```
 
 
-# What is TTY?
-# CentOS vs Debian
-# SELinux or Apparmor
-# aptitude vs apt
-# crontab
+#### What is TTY?
+#### CentOS vs Debian
+#### SELinux or Apparmor
+#### aptitude vs apt
+#### crontab
