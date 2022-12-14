@@ -72,6 +72,7 @@ The $ sign is to denote a variable. The echo command prints the value of the PAT
 APT stands for Advanced Package Tool. It is a set of core tools inside Debian and Ubuntu Linux system. You can use the apt command to install, delete or remove apps, keep Ubuntu/Debian server up to date with security patches and more.
 
 `sudo apt update`
+
 `sudo apt upgrade`
 `apt list` (list all packages)
 `apt list --upgradable`
