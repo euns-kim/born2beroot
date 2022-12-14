@@ -106,6 +106,34 @@ The `grep` command searches for the pattern specified by the Pattern parameter a
 
 `grep [option][pattern][filename]`
 
+### 9) How to list users in Linux
+
+`cat /etc/password`  
+`getent passwd`  
+
+- Username
+- Encrypted password (`x` means that the password is stored in the file)
+- User ID number (UID)
+- User's group ID number (GID)
+- Full name of the user (GECOS)
+- User home directory
+- Login shell (defaults to `/bin/bash`)
+
+`awk -F: '{ print $1}' /etx/passwd`  
+`cut -d: -f1 /etc/passwd`  
+`getent passwd | awk -F: { print $1}`
+`getent passwd | cut -d: -f1`
+
+- only the usernames
+
+getent passwd | grep [username]
+
+- check if the user exists
+
+getent passwd | wc -l
+
+- check how many user accounts are on the system
+
 Source:
 - https://www.howtogeek.com/737563/what-is-root-on-linux/
 - https://www.tuwlab.com/ece/24044
@@ -115,62 +143,88 @@ Source:
 - https://man7.org/linux/man-pages/man1/getent.1.html
 - https://coding-factory.tistory.com/802
 - https://coding-factory.tistory.com/803
+- https://linuxize.com/post/how-to-list-users-in-linux/
 
 
 
-Create a group:
 
-sudo groupadd [group_name]
+## Project related commands
 
-Check if a group created:
+1. group and user
 
-getent group
++ Create a group:  
 
-Check all local users:
+`sudo groupadd [group_name]`  
 
-cut -d: -f1 /etc/passwd
++ Check if a group created:  
 
-Create a user:
+`getent group`
 
-sudo adduser [new_username]
++ Check all local users:  
 
-Assign an user into a group:
+`cut -d: -f1 /etc/passwd`  
 
-sudo usermod -aG [group_name] [username]
++ Create a user:  
 
-Check which users are in a group:
+`sudo adduser [new_username]`  
 
-getent group [group_name]
++ Assign an user into a group:  
 
-Check which groups user account belongs:
+`sudo usermod -aG [group_name] [username`]`  
 
-groups
++ Check which users are in a group:  
 
-Check password rules for the user:
+`getent group [group_name]`  
 
-chage -l [new_username]
++ Check which groups user account belongs:  
+
+`groups`  
+
++ Check password rules for the user:  
+
+`chage -l [new_username]`  
+
+2. hostname
+
++ Check current hostname:  
+
+`hostnamectl`  
+
++ Change the hostname:  
+
+`hostnamectl set-hostname [new_hostname]`  
+
++ Change /etc/hosts file:  
+
+`sudo nano /etc/hosts`  
+
++ Change old_hostname with new_hostname:  
+
+```
+127.0.0.1	localhost  
+127.0.0.1	new_hostname  
+```
+
++ Reboot:
+
+`sudo reboot`
+
+3. sudo
+
++ Adding user to sudo group:  
+
+`adduser [user_name] sudo`  
+
++ Alternatively:  
+
+`usermod -aG sudo [user_name]`  
+
++ Verify:  
+
+`getent group sudo`  
 
 
-
-Check current hostname:
-
-hostnamectl
-
-Change the hostname:
-
-hostnamectl [hostname] [new_hostname]
-
-Change /etc/hosts file:
-
-sudo nano /etc/hosts
-
-Change old_hostname with new_hostname:
-
-127.0.0.1	localhost
-127.0.0.1	new_hostname
-
-Reboot:
-
-sudo reboot
-
-
+# What is TTY?
+# CentOS vs Debian
+# SELinux or Apparmor
+# aptitude vs apt
