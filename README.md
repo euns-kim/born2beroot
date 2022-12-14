@@ -119,7 +119,8 @@ show:
 - Full name of the user (GECOS)
 - User home directory
 - Login shell (defaults to `/bin/bash`)  
-
+   
+   
 `awk -F: '{ print $1}' /etx/passwd`  
 `cut -d: -f1 /etc/passwd`  
 `getent passwd | awk -F: { print $1}`  
@@ -127,7 +128,8 @@ show:
 
 show:
 - only the usernames  
-
+   
+   
 `getent passwd | grep [username]` checks if the user exists   
 
 `getent passwd | wc -l` checks how many user accounts are on the system    
@@ -193,7 +195,8 @@ groups
 ```
 chage -l [new_username]
 ```  
-
+    
+	
 2. Hostname
 
 + Check current hostname:  
@@ -221,7 +224,8 @@ sudo nano /etc/hosts
 ```
 sudo reboot
 ```  
-
+   
+   
 3. Sudo
 
 + Adding user to sudo group:  
@@ -238,7 +242,8 @@ usermod -aG sudo [user_name]
 ```
 getent group
 ```  
-
+   
+   
 4. SSH
 
 + Configure SSH:
