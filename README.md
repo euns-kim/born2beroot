@@ -111,6 +111,7 @@ The `grep` command searches for the pattern specified by the Pattern parameter a
 `cat /etc/password`  
 `getent passwd`  
 
+show:  
 - Username
 - Encrypted password (`x` means that the password is stored in the file)
 - User ID number (UID)
@@ -121,18 +122,15 @@ The `grep` command searches for the pattern specified by the Pattern parameter a
 
 `awk -F: '{ print $1}' /etx/passwd`  
 `cut -d: -f1 /etc/passwd`  
-`getent passwd | awk -F: { print $1}`
-`getent passwd | cut -d: -f1`
+`getent passwd | awk -F: { print $1}`  
+`getent passwd | cut -d: -f1`  
 
-- only the usernames
+show only the usernames  
 
-getent passwd | grep [username]
+`getent passwd | grep [username]` checks if the user exists  
 
-- check if the user exists
+`getent passwd | wc -l` checks how many user accounts are on the system  
 
-getent passwd | wc -l
-
-- check how many user accounts are on the system
 
 Source:
 - https://www.howtogeek.com/737563/what-is-root-on-linux/
@@ -146,85 +144,120 @@ Source:
 - https://linuxize.com/post/how-to-list-users-in-linux/
 
 
-
-
 ## Project related commands
 
 1. group and user
 
 + Create a group:  
-
-`sudo groupadd [group_name]`  
+```
+sudo groupadd [group_name]
+```
 
 + Check if a group created:  
-
-`getent group`
+```
+getent group
+```
 
 + Check all local users:  
-
-`cut -d: -f1 /etc/passwd`  
+```
+cut -d: -f1 /etc/passwd  
+```
 
 + Create a user:  
+```
+sudo adduser [new_username]
+```
 
-`sudo adduser [new_username]`  
++ Verify:
+```
+getent passwd [new_username]
+```
 
 + Assign an user into a group:  
-
-`sudo usermod -aG [group_name] [username`]`  
+```
+sudo usermod -aG [group_name] [username]
+```
 
 + Check which users are in a group:  
-
-`getent group [group_name]`  
+```
+getent group [group_name]
+```
 
 + Check which groups user account belongs:  
-
-`groups`  
+```
+groups
+```
 
 + Check password rules for the user:  
-
-`chage -l [new_username]`  
+```
+chage -l [new_username]
+```
 
 2. hostname
 
 + Check current hostname:  
-
-`hostnamectl`  
+```
+hostnamectl
+```
 
 + Change the hostname:  
-
-`hostnamectl set-hostname [new_hostname]`  
+```
+hostnamectl set-hostname [new_hostname]
+```
 
 + Change /etc/hosts file:  
-
-`sudo nano /etc/hosts`  
+```
+sudo nano /etc/hosts
+```
 
 + Change old_hostname with new_hostname:  
-
 ```
 127.0.0.1	localhost  
 127.0.0.1	new_hostname  
 ```
 
 + Reboot:
-
-`sudo reboot`
+```
+sudo reboot
+```
 
 3. sudo
 
 + Adding user to sudo group:  
-
-`adduser [user_name] sudo`  
+```
+adduser [user_name] sudo
+```
 
 + Alternatively:  
-
-`usermod -aG sudo [user_name]`  
+```
+usermod -aG sudo [user_name]
+```
 
 + Verify:  
+```
+getent group sudo
+```
 
-`getent group sudo`  
+4. SSH
+
++ Configure SSH:
+```
+sudo vi /etc/ssh/sshd_config
+```
+
++ Check SSH status:
+```
+sudo service ssh status
+```
+
++ Alternatively:
+```
+systemctl status ssh
+```
 
 
 # What is TTY?
 # CentOS vs Debian
 # SELinux or Apparmor
 # aptitude vs apt
+# crontab
