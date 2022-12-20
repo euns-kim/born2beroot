@@ -4,9 +4,11 @@
 
 "A virtual machine (VM) is a virtual environment that works like a computer within a computer. It runs on an isolated partition of its host computer with its own CPU power, memory, operating system (such as Windows, Linux, macOS), and other resources. End users can run applications on VMs and use them as they normally would on their workstation."
 
+The physical machine is host, VMs installed are guests.
+
 ### How do virtual machines work?
 
-"Virtual machines are made possible through virtualization technology. Virtualization uses software to simulate virtual hardware that allows multiple VMs to run on a single machine. The physical machine is know as the host while the VMs running on it are called guests.
+"Virtual machines are made possible through virtualization technology. Virtualization uses software to simulate virtual hardware that allows multiple VMs to run on a single machine. The physical machine is known as the host while the VMs running on it are called guests.
 
 This process is managed by software known as hypervisor. The hypervisor is responsible for managing and provisioning resources – like memory and storage – from the host to guests. It also schedules operations in VMs so they don't overrun each other when using resources."
 
@@ -22,11 +24,42 @@ VDI deployments allow users to remotely access desktop environments, such as Win
 
 1) It enhances security – VM environments are isolated from the host operating system and can be easily reverted to older versions.
 2) It improves cost efficiency – by hosting multiple VMs on one server, the physical hardware is leveraged at its maximum capacity.
-3) Cloud computing
-4) Scalability
+<!-- 3) Cloud computing 4) Scalability -->
 
 Source:
 - https://www.citrix.com/solutions/vdi-and-daas/what-is-a-virtual-machine.html
+
+## Operating system
+
+### Debian 
+
+Debian, in comparison to CentOS, :
+- uses different package management.
+- supports major version upgrades.
+- is easy for beginners.
+- has desktop friendly applications and GUI.
+- is rapidly developed, has short testing cycle, is considered to be less stable.
+
+Source:
+- https://www.educba.com/centos-vs-debian/
+
+
+### Aptitude vs APT
+
+Aptitude and apt are both tools for handling packages. APT is a lower-level package manager, while Aptitude is a high-level package manager. APT can be used in other higher-level package managers. Aptitude offers better functionality. It contains the functionalities of apt-get, apt-mark, and apt-cache. APT lacks UI and is restricted to the command-line interface.
+
+Source:
+https://www.fosslinux.com/43884/apt-vs-aptitude.htm
+
+
+### AppArmor
+
+"AppArmor is an effective and easy-to-use Linux application security system. AppArmor proactively protects the operating system and applications from external or internal threats, even zero-day attacks, by enforcing good behavior and preventing both known and unknown application flaws from being exploited."
+
+Run aa-status to see if your Linux distribution already has AppArmor integrated.
+
+Source:
+https://apparmor.net/
 
 
 ## Linux basics
@@ -49,23 +82,23 @@ Sudo authentification is through user's own password, whereas su authentificatio
 
 #### 3-2)	sudo bash
 
-Using sudo to run a Bash shell opens a new shell with root as the user, so that one does not need to type 'sudo' repeatedly. To exit from the root user's shell, hit 'ctrl+D' or type 'exit' and hit enter.
+Using sudo to run a bash shell opens a new shell with root as the user. One does not need to type 'sudo' repeatedly. To exit from the root user's shell, hit 'ctrl+D' or type 'exit' and hit enter.
 
 #### 3-3)	/etc/sudoers
 
 The "etc/sudoers" file MUST be edited with the 'visudo' command as root. The authority to rewrite sudoers is not given to anyone including the root.
 
-### 4)	Secure Path
+### 4)	Secure path
 
 The shell PATH that is used to execute sudo.
 
-#### 4-1)	How does PATH work in Bash?
+#### 4-1)	How does PATH work in bash?
 
 The PATH variable is responsible for telling bash where to look for programmes that certain commands are calling. In other words, the PATH variable stores where executables may be found. Whenever any command is run, the shell looks up the PATH directories for the target executable file and runs it. Most of the command tools are located under the /usr/bin directory.
 
 #### 4-2)	echo $PATH
 
-The $ sign is to denote a variable. The echo command prints the value of the PATH variable. Each of the directories is separated by a ':' sign.
+The $ sign is to denote a variable. The echo command prints the value of the PATH variable. Each of the directories is separated by a ':' sign. The output is a list of directories where executable files are stored. If you try to run a file or command that isn't in one of the directories in your path, you'll receive an error that says the command is not found.
 
 ### 5)	apt command
 
@@ -73,24 +106,24 @@ APT stands for Advanced Package Tool. It is a set of core tools inside Debian an
 
 `sudo apt update`  
 `sudo apt upgrade`  
-`apt list`	(list all packages)  
+<!--`apt list`	(list all packages)  
 `apt list --upgradable`  
 `apt list --installed`  
-`apt depends [pkg_name]`	(list all the dependencies a package has)  
+`apt depends [pkg_name]`	(list all the dependencies a package has)  -->
 `sudo apt install [pkg_name]`  
 `sudo apt remove [pkg_name]`  
 `sudo apt purge [pkg_name]`	(remove both package and config files)  
-`sudo apt (--purge) autoremove`	(remove automatically installed packages when no longer needed)  
+<!--`sudo apt (--purge) autoremove`	(remove automatically installed packages when no longer needed)  
 `apt search [pkg_name]`  
 `apt show [pkg_name]`	(show information about the given package(s))  
 `apt rdepends [pkg_name]`	(recursive dependency listings similar to apt-cache)  
 `sudo apt-mark hold [pkg_name]`	(Package holding means it can be upgraded till you run unhold on it again.)  
 `sudo apt-mark unhold [pkg_name]`  
-`sudo apt edit-sources`	(edit the source information file)  
+`sudo apt edit-sources`	(edit the source information file)  -->
 
 ### 6)	dpkg command
 
-`dpkg` is a package manager for Debian, Ubuntu and many other Linux distro.
+`dpkg` is a package manager for Debian, Ubuntu and many other Linux distributions.
 
 `dpkg -l`	(list all installed packages, along with package version and short description)  
 `dpkg -l [pkg_name]`	(list individual installed packages)  
@@ -121,10 +154,11 @@ show:
 - Login shell (defaults to `/bin/bash`)  
    
    
-`awk -F: '{ print $1}' /etx/passwd`  
+`awk -F: '{ print $1}' /etc/passwd`  
 `cut -d: -f1 /etc/passwd`  
 `getent passwd | awk -F: { print $1}`  
 `getent passwd | cut -d: -f1`  
+`compgen -u`  
 
 show:
 - only the usernames  
@@ -191,6 +225,11 @@ getent group [group_name]
 groups
 ```
 
++ Alternatively:
+```
+sudo groups [username]
+```
+
 + Check password rules for the user:  
 ```
 chage -l [new_username]
@@ -242,7 +281,7 @@ usermod -aG sudo [user_name]
 ```
 getent group
 ```  
-   
+
    
 4. SSH
 
@@ -260,10 +299,3 @@ sudo service ssh status
 ```
 systemctl status ssh
 ```
-
-
-#### What is TTY?
-#### CentOS vs Debian
-#### SELinux or Apparmor
-#### aptitude vs apt
-#### crontab
