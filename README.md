@@ -78,7 +78,7 @@ The sudo command makes it possible to administer Linux computers without logging
 
 #### 3-1)	sudo vs su
 
-Sudo authentification is through user's own password, whereas su authentification through the root user's password. You first need to assign a password to the root user and everyone has to know the root user's password to use su – it risks the system security. It is much more secure to the sudoers list and sudo than su for that reason.
+Sudo authentification is through user's own password, whereas su authentification through the root user's password. You first need to assign a password to the root user and everyone has to know the root user's password to use su – it risks the system security. It is much more secure to use the sudoers list and sudo than su for that reason.
 
 #### 3-2)	sudo bash
 
@@ -183,7 +183,7 @@ Source:
 
 ## Project related commands
 
-1. Group and user
+### 1) Group and user
 
 + Create a group:  
 ```
@@ -234,9 +234,9 @@ sudo groups [username]
 ```
 chage -l [new_username]
 ```  
-    
+---    
 	
-2. Hostname
+### 2) Hostname
 
 + Check current hostname:  
 ```
@@ -263,9 +263,9 @@ sudo nano /etc/hosts
 ```
 sudo reboot
 ```  
+---   
    
-   
-3. Sudo
+### 3) Sudo
 
 + Adding user to sudo group:  
 ```
@@ -281,9 +281,9 @@ usermod -aG sudo [user_name]
 ```
 getent group
 ```  
-
+---
    
-4. SSH
+### 4) SSH
 
 + Configure SSH:
 ```
